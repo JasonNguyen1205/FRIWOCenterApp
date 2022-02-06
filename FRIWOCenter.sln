@@ -1,0 +1,104 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1700.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPIs", "WebAPIs\WebAPIs.csproj", "{047ECC88-0F38-4C0C-8A80-CF5E6A3F90A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWASM.Standalone", "BlazorWASM.Hosted\BlazorWASM.Standalone.csproj", "{5C630213-20CB-4B75-853C-7E7B4650E087}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWASM.Client", "FRIWOCenter.Client\BlazorWASM.Client.csproj", "{742B9CD8-A6E0-45C7-97D7-E617471C0512}"
+EndProject
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "ASPNETCore.WebAPI", "FRIWOCenter.WebAPI\ASPNETCore.WebAPI.csproj", "{2111B2B2-F47A-4082-8A47-0CCF5E9C97E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FRIWOCenter.Components", "FRIWOCenter.Components\FRIWOCenter.Components.csproj", "{D7B884D2-24A8-44FF-83B1-DD75C6151B46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FRIWOCenter.Shared", "FRIWOCenter.Shared\FRIWOCenter.Shared.csproj", "{56C692BF-A3CC-4DEE-BC19-AA7040E31C76}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{047ECC88-0F38-4C0C-8A80-CF5E6A3F90A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{047ECC88-0F38-4C0C-8A80-CF5E6A3F90A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{047ECC88-0F38-4C0C-8A80-CF5E6A3F90A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{047ECC88-0F38-4C0C-8A80-CF5E6A3F90A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C630213-20CB-4B75-853C-7E7B4650E087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C630213-20CB-4B75-853C-7E7B4650E087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C630213-20CB-4B75-853C-7E7B4650E087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C630213-20CB-4B75-853C-7E7B4650E087}.Release|Any CPU.Build.0 = Release|Any CPU
+		{742B9CD8-A6E0-45C7-97D7-E617471C0512}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{742B9CD8-A6E0-45C7-97D7-E617471C0512}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{742B9CD8-A6E0-45C7-97D7-E617471C0512}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{742B9CD8-A6E0-45C7-97D7-E617471C0512}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2111B2B2-F47A-4082-8A47-0CCF5E9C97E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2111B2B2-F47A-4082-8A47-0CCF5E9C97E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2111B2B2-F47A-4082-8A47-0CCF5E9C97E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2111B2B2-F47A-4082-8A47-0CCF5E9C97E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7B884D2-24A8-44FF-83B1-DD75C6151B46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7B884D2-24A8-44FF-83B1-DD75C6151B46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7B884D2-24A8-44FF-83B1-DD75C6151B46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7B884D2-24A8-44FF-83B1-DD75C6151B46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56C692BF-A3CC-4DEE-BC19-AA7040E31C76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56C692BF-A3CC-4DEE-BC19-AA7040E31C76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56C692BF-A3CC-4DEE-BC19-AA7040E31C76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56C692BF-A3CC-4DEE-BC19-AA7040E31C76}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8442BC39-D23A-4552-B6C0-A8AAC13D3CE6}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.StandardHeader = $1
+		$1.Text = "${FullFileName}${AuthorName}"
+		$0.TextStylePolicy = $2
+		$2.FileWidth = 80
+		$2.TabsToSpaces = True
+		$2.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $3
+		$3.scope = text/x-csharp
+		$0.TextStylePolicy = $4
+		$4.FileWidth = 80
+		$4.TabsToSpaces = True
+		$4.scope = text/plain
+		$0.TextStylePolicy = $5
+		$5.TabWidth = 2
+		$5.TabsToSpaces = True
+		$5.IndentWidth = 2
+		$5.NoTabsAfterNonTabs = True
+		$5.scope = text/x-json
+		$0.TextStylePolicy = $6
+		$6.FileWidth = 80
+		$6.TabsToSpaces = True
+		$6.scope = text/x-web
+		$0.TextStylePolicy = $7
+		$7.FileWidth = 80
+		$7.TabsToSpaces = True
+		$7.scope = text/x-vs
+		$0.TextStylePolicy = $8
+		$8.TabsToSpaces = True
+		$8.NoTabsAfterNonTabs = True
+		$8.scope = text/x-css
+		$0.TextStylePolicy = $9
+		$9.TabsToSpaces = True
+		$9.NoTabsAfterNonTabs = True
+		$9.scope = text/x-cshtml-web
+		$0.TextStylePolicy = $10
+		$10.TabsToSpaces = True
+		$10.NoTabsAfterNonTabs = True
+		$10.scope = text/x-html
+		$0.TextStylePolicy = $11
+		$11.FileWidth = 80
+		$11.TabsToSpaces = True
+		$11.scope = text/x-javascript
+		$0.TextStylePolicy = $12
+		$12.FileWidth = 80
+		$12.TabsToSpaces = True
+		$12.scope = text/x-jsts
+	EndGlobalSection
+EndGlobal
