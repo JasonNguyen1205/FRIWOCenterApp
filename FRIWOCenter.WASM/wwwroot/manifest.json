@@ -1,6 +1,6 @@
 ﻿{
-  "name": "BlazorWASM.Hosted",
-  "short_name": "BlazorWASM.Hosted",
+  "name": "FRIWOConnect.Hosted",
+  "short_name": "FRIWOConnect.Hosted",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",

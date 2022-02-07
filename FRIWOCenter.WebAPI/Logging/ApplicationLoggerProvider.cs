@@ -6,9 +6,9 @@ namespace FRIWOCenter.WebHost.Logging
 {
     public class ApplicationLoggerProvider : ILoggerProvider
     {
-        private readonly IDbContextFactory<LoggingBlazorWASMContext> _contextFactory;
+        private readonly IDbContextFactory<LoggingFRIWOConnectContext> _contextFactory;
 
-        public ApplicationLoggerProvider(IDbContextFactory<LoggingBlazorWASMContext> contextFactory)
+        public ApplicationLoggerProvider(IDbContextFactory<LoggingFRIWOConnectContext> contextFactory)
         {
             _contextFactory = contextFactory;
         }

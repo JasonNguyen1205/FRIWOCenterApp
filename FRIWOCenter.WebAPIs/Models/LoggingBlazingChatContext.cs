@@ -2,13 +2,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FRIWOCenter.WebAPIs.Models
 {
-    public partial class LoggingBlazorWASMContext : DbContext
+    public partial class LoggingFRIWOConnectContext : DbContext
     {
-        public LoggingBlazorWASMContext()
+        public LoggingFRIWOConnectContext()
         {
         }
 
-        public LoggingBlazorWASMContext(DbContextOptions<LoggingBlazorWASMContext> options)
+        public LoggingFRIWOConnectContext(DbContextOptions<LoggingFRIWOConnectContext> options)
             : base(options)
         {
         }

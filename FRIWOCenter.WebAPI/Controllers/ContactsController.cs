@@ -17,9 +17,9 @@ namespace FRIWOCenter.WebHost.Controllers
     public class ContactsController : ControllerBase
     {
         private readonly ILogger<ContactsController> logger;
-        private readonly BlazorWASMContext _context;
+        private readonly FRIWOConnectContext _context;
 
-        public ContactsController(ILogger<ContactsController> logger, BlazorWASMContext context)
+        public ContactsController(ILogger<ContactsController> logger, FRIWOConnectContext context)
         {
             this.logger = logger;
             _context = context;

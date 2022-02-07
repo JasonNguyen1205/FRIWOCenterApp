@@ -18,9 +18,9 @@ namespace FRIWOCenter.WebHost.Controllers
     public class ProfileController : ControllerBase
     {
         private readonly ILogger<ProfileController> logger;
-        private readonly BlazorWASMContext _context;
+        private readonly FRIWOConnectContext _context;
 
-        public ProfileController(ILogger<ProfileController> logger, BlazorWASMContext context)
+        public ProfileController(ILogger<ProfileController> logger, FRIWOConnectContext context)
         {
             this.logger = logger;
             _context = context;
@@ -51,7 +51,7 @@ namespace FRIWOCenter.WebHost.Controllers
         [HttpGet("DownloadServerFile")]
         public async Task<string> DownloadServerFile()
         {
-            var filePath = @"C:\Data\CuriousDrive\GitHub Repos\BlazorWASM\Documents\Word\ServerFile.docx";
+            var filePath = @"C:\Data\CuriousDrive\GitHub Repos\FRIWOConnect\Documents\Word\ServerFile.docx";
 
             using (var fileInput = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {

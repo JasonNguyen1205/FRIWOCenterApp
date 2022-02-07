@@ -1,5 +1,12 @@
-﻿using Microsoft.AspNetCore.ResponseCompression;
+﻿using FRIWOCenter.Shared.Logging;
+using FRIWOCenter.WebAPIs.Hubs;
+using FRIWOCenter.WebAPIs.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -27,9 +34,30 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "BlazorWASM.WebAPI", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "FRIWOConnect.WebAPI", Version = "v1" });
 });
 builder.Services.AddSignalR();
+
+builder.Services.AddDbContext<FRIWOConnectContext>(options => options.UseSqlite("Name=FRIWOConnect"));
+builder.Services.AddDbContextFactory<LoggingFRIWOConnectContext>(options => options.UseSqlite("Name=FRIWOConnect"));
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(jwtBearerOptions =>
+{
+    jwtBearerOptions.RequireHttpsMetadata = true;
+    jwtBearerOptions.SaveToken = true;
+    jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["JWTSettings:SecretKey"])),
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ClockSkew = TimeSpan.Zero
+    };
+});
 
 builder.Services.AddResponseCompression(opts =>
 {
@@ -38,7 +66,10 @@ builder.Services.AddResponseCompression(opts =>
 });
 
 builder.Services.AddHttpClient();
+
+builder.Services.AddSingleton<ILoggerProvider, ApplicationLoggerProvider>();
 #endregion
+
 
 var app = builder.Build();
 
@@ -47,12 +78,12 @@ if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
     app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BlazorWASM.WebAPI v1"));
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FRIWOConnect.WebAPI v1"));
 }
 
 app.UseResponseCompression();
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 app.UseRouting();
 
@@ -66,39 +97,10 @@ app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
     endpoints.MapFallbackToFile("index.html");
-    //endpoints.MapHub<ChatHub>("/chathub");
+    endpoints.MapHub<ChatHub>("/chathub");
 });
 #endregion
-
-
-#region FakeData
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateTime.Now.AddDays(index),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
-
-#endregion
-
 
 Console.WriteLine("Application has started");
 
 app.Run();
-
-record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FRIWOCenter.WebHost.Models
 {
-    public partial class BlazorWASMContext : DbContext
+    public partial class FRIWOConnectContext : DbContext
     {
-        public BlazorWASMContext()
+        public FRIWOConnectContext()
         {
         }
 
-        public BlazorWASMContext(DbContextOptions<BlazorWASMContext> options)
+        public FRIWOConnectContext(DbContextOptions<FRIWOConnectContext> options)
             : base(options)
         {
         }

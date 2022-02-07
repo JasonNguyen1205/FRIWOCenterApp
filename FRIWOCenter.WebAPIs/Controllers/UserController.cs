@@ -35,13 +35,13 @@ namespace FRIWOCenter.WebAPIs.Controllers
     public class UserController : ControllerBase
     {
         private readonly ILogger<UserController> _logger;
-        private readonly BlazorWASMContext _context;
+        private readonly FRIWOConnectContext _context;
         private readonly IConfiguration _configuration;
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
         public UserController(ILogger<UserController> logger,
-                                BlazorWASMContext context,
+                                FRIWOConnectContext context,
                                 IConfiguration configuration,
                                 IHttpClientFactory httpClientFactory,
                                 IWebHostEnvironment webHostEnvironment)

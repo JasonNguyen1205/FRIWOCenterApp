@@ -16,9 +16,9 @@ namespace FRIWOCenter.WebAPIs.Controllers
     public class SettingsController : ControllerBase
     {
         private readonly ILogger<SettingsController> logger;
-        private readonly BlazorWASMContext _context;
+        private readonly FRIWOConnectContext _context;
 
-        public SettingsController(ILogger<SettingsController> logger, BlazorWASMContext context)
+        public SettingsController(ILogger<SettingsController> logger, FRIWOConnectContext context)
         {
             this.logger = logger;
             _context = context;

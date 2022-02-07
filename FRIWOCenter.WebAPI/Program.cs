@@ -28,11 +28,11 @@ builder.Services.AddCors(options =>
                             "https://localhost:7004",
                             "https://localhost:5000",
                             "https://localhost:5001",
-                            "wss://localhost:50238",
-                            "wss://localhost:50401",
+                            "https://localhost:50238",
+                            "https://localhost:50401",
                             "https://localhost:44322",
                             "https://localhost:44323",
-                            "https://www.blazingchat.com/")
+                            "https://www.FRIWOConnect.com/")
                             .AllowAnyHeader()
                             .AllowAnyMethod();
             });
@@ -42,13 +42,13 @@ builder.Services.AddControllers();
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "BlazorWASM.WebAPI", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "FRIWOConnect.WebAPI", Version = "v1" });
 });
 
 builder.Services.AddSignalR();
 
-builder.Services.AddDbContext<BlazorWASMContext>(options => options.UseSqlite("Name=BlazorWASM"));
-builder.Services.AddDbContextFactory<LoggingBlazorWASMContext>(options => options.UseSqlite("Name=BlazorWASM"));
+builder.Services.AddDbContext<FRIWOConnectContext>(options => options.UseSqlite("Name=FRIWOConnect"));
+builder.Services.AddDbContextFactory<LoggingFRIWOConnectContext>(options => options.UseSqlite("Name=FRIWOConnect"));
 
 builder.Services.AddAuthentication(options =>
 {
@@ -86,7 +86,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
     app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BlazorWASM.WebAPI v1"));
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FRIWOConnect.WebAPI v1"));
 }
 
 app.UseResponseCompression();

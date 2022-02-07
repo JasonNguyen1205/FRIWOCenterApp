@@ -24,8 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FRIWOCenter.Client\FRIWOCenter.WASMStandalone.csproj" />
     <ProjectReference Include="..\FRIWOCenter.Shared\FRIWOCenter.Shared.csproj" />
+    <ProjectReference Include="..\FRIWOCenter.WASM\FRIWOCenter.WASM.csproj" />
   </ItemGroup>
 
 </Project>

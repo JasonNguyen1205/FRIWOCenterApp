@@ -11,9 +11,9 @@ namespace FRIWOCenter.WebAPIs.Controllers
     [Route("[controller]")]
     public class LogsController : ControllerBase
     {
-        private readonly LoggingBlazorWASMContext _context;
+        private readonly LoggingFRIWOConnectContext _context;
 
-        public LogsController(LoggingBlazorWASMContext context)
+        public LogsController(LoggingFRIWOConnectContext context)
         {
             _context = context;
         }
