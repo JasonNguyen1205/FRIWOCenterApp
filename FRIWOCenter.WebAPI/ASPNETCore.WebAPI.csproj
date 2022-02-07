@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FRIWOCenter.Client\FRIWOCenter.Client.csproj" />
+    <ProjectReference Include="..\FRIWOCenter.Client\BlazorWASM.Client.csproj" />
     <ProjectReference Include="..\FRIWOCenter.Shared\FRIWOCenter.Shared.csproj" />
   </ItemGroup>
 

@@ -21,4 +21,6 @@
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties wwwroot_4appsettings_1development_1json__JsonSchema="https://ide-integration.batect.dev/v1/configSchema.json" /></VisualStudio></ProjectExtensions>
 </Project>

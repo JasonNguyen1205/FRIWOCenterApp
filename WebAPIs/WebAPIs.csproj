@@ -12,10 +12,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BlazorWASM.Hosted\BlazorWASM.Standalone.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
     <ProjectReference Include="..\FRIWOCenter.Shared\FRIWOCenter.Shared.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
   </ItemGroup>
 </Project>

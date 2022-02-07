@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.Extensions.Configuration;
 using FRIWOCenter.Shared.Models;
 using FRIWOCenter.Shared.ViewModels;
+using FRIWOCenter.Shared.Extensions;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -28,7 +29,7 @@ builder.Services.Configure<ApplicationSettings>(options =>
 });
 
 // adding application services
-builder.Services.AddBlazorWASM(applicationSettingsSection.Get<ApplicationSettings>());
+builder.Services.AddFRIWOCenter(applicationSettingsSection.Get<ApplicationSettings>());
 
 #endregion
 

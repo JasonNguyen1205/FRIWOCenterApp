@@ -14,9 +14,11 @@ builder.Services.AddCors(options =>
             builder =>
             {
                 builder.WithOrigins(
-                          
+                     "http://localhost:5000",
+                            "http://localhost:5001",
+                            "http://localhost:6000",
                             "https://localhost:5000",
-
+                            "https://localhost:5001",
                             "https://localhost:6000")
                             .AllowAnyHeader()
                             .AllowAnyMethod();
@@ -50,7 +52,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseResponseCompression();
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseRouting();
 
@@ -67,6 +69,8 @@ app.UseEndpoints(endpoints =>
     //endpoints.MapHub<ChatHub>("/chathub");
 });
 #endregion
+
+
 #region FakeData
 var summaries = new[]
 {
