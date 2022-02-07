@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace BlazorWASM.WebAPI.Models
+namespace FRIWOCenter.WebHost.Models
 {
     public partial class LoggingBlazorWASMContext : DbContext
     {

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using FRIWOCenter.Shared.Models;
 using Microsoft.AspNetCore.SignalR;
 
-namespace BlazorWASM.WebAPI.Hubs
+namespace FRIWOCenter.WebHost.Hubs
 {
     public class ChatHub : Hub
     {

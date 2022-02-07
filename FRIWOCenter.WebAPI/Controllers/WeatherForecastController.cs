@@ -1,12 +1,11 @@
-﻿using BlazorWASM.WebAPI;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BlazorWASM.WebAPI.Controllers
+namespace FRIWOCenter.WebHost.Controllers
 {
     [ApiController]
     [Route("[controller]")]

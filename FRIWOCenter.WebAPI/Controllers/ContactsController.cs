@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
-using BlazorWASM.WebAPI.Models;
+using FRIWOCenter.WebHost.Models;
 
-namespace BlazorWASM.WebAPI.Controllers
+namespace FRIWOCenter.WebHost.Controllers
 {
     [ApiController]
     [Route("[controller]")]

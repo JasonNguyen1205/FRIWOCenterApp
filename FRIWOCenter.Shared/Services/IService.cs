@@ -1,13 +1,12 @@
-﻿using FRIWOLocalAPI.Models;
+﻿using FRIWOCenter.Shared.Models;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
-namespace FRIWOLocalAPI.SerialPorts
-{
+
+namespace FRIWOCenter.Shared.Services { 
     public interface IService
     {
         int Counter { get; set; }
         ILogger Logger { get; }
-
-        public Task<List<Unit>> SendData(List<Unit> units);
     }
 }

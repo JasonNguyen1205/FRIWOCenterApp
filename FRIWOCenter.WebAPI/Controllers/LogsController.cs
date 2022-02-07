@@ -3,9 +3,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using BlazorWASM.WebAPI.Models;
+using FRIWOCenter.WebHost.Models;
 
-namespace BlazorWASM.WebAPI.Controllers
+namespace FRIWOCenter.WebHost.Controllers
 {
     [ApiController]
     [Route("[controller]")]

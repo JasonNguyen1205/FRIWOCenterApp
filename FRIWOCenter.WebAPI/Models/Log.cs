@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace BlazorWASM.WebAPI.Models
+namespace FRIWOCenter.WebHost.Models
 {
     public partial class Log
     {

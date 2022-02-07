@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 
-namespace BlazorWASM.WebAPI.Models
+namespace FRIWOCenter.WebHost.Models
 {
     public partial class BlazorWASMContext : DbContext
     {

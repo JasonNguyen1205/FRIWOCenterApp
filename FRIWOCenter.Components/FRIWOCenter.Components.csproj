@@ -20,10 +20,4 @@
     <ProjectReference Include="..\FRIWOCenter.Shared\FRIWOCenter.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Update="_Imports.razor">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-    </Content>
-  </ItemGroup>
-
 </Project>

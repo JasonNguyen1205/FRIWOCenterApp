@@ -22,14 +22,14 @@ using System.Web;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Authorization;
-using BlazorWASM.WebAPI;
-using BlazorWASM.WebAPI.Models;
-using User = BlazorWASM.WebAPI.Models.User;
+using User = FRIWOCenter.WebHost.Models.User;
 using FRIWOCenter.Shared.Models.Twitter;
 using FRIWOCenter.Shared.Models;
 using FRIWOCenter.Shared.Models.Facebook;
+using FRIWOCenter.WebHost;
+using FRIWOCenter.WebHost.Models;
 
-namespace BlazorWASM.WebAPI.Controllers
+namespace FRIWOCenter.WebHost.Controllers
 {
     [ApiController]
     [Route("[controller]")]

@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
 using System.Text;
-using BlazorWASM.WebAPI.Hubs;
-using BlazorWASM.WebAPI.Logging;
-using BlazorWASM.WebAPI.Models;
+using FRIWOCenter.WebHost.Hubs;
+using FRIWOCenter.WebHost.Logging;
+using FRIWOCenter.WebHost.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.ResponseCompression;

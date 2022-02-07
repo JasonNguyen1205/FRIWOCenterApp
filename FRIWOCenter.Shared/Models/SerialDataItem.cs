@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace FRIWOLocalAPI.SerialPorts
+namespace FRIWOCenter.Shared.Models
 {
     public class SerialDataItem : ComponentBase
     {

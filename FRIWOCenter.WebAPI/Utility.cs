@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlazorWASM.WebAPI
+namespace FRIWOCenter.WebHost
 {
     public class Utility
     {

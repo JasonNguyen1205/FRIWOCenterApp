@@ -1,6 +1,6 @@
 using System;
 
-namespace BlazorWASM.WebAPI
+namespace FRIWOCenter.WebHost
 {
     public class WeatherForecast
     {

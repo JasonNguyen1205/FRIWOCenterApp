@@ -1,19 +1,16 @@
-﻿using FRIWOLocalAPI.Models;
-using Microsoft.AspNetCore.Components;
+﻿using FRIWOCenter.Shared.Models;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using NuGet.DependencyResolver;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO.Ports;
-using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace FRIWOLocalAPI.SerialPorts
+namespace FRIWOCenter.Shared.Services
 {
     public class SerialService : BackgroundService, IService
     {
@@ -30,7 +27,7 @@ namespace FRIWOLocalAPI.SerialPorts
         {
             get
             {
-                lock(CollectionLock)
+                lock (CollectionLock)
                 {
                     return _asciiDataCollection;
                 }
@@ -50,10 +47,10 @@ namespace FRIWOLocalAPI.SerialPorts
             SerialPort = new SerialPort("COM1");
 
             SerialPort.BaudRate = 9600;
-            SerialPort.Parity = System.IO.Ports.Parity.None;
-            SerialPort.StopBits = System.IO.Ports.StopBits.One;
+            SerialPort.Parity = Parity.None;
+            SerialPort.StopBits = StopBits.One;
             SerialPort.DataBits = 8;
-            SerialPort.Handshake = System.IO.Ports.Handshake.None;
+            SerialPort.Handshake = Handshake.None;
             SerialPort.ReadTimeout = 500;
             SerialPort.WriteTimeout = 500;
 
@@ -80,7 +77,7 @@ namespace FRIWOLocalAPI.SerialPorts
 
         public void OpenSerialPort()
         {
-            if(!SerialPort.IsOpen)
+            if (!SerialPort.IsOpen)
             {
                 try
                 {
@@ -91,7 +88,7 @@ namespace FRIWOLocalAPI.SerialPorts
                     SerialPort.RtsEnable = true;
 
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     SerialPortError += $"\n{DateTime.Now:HH:mm:ss}: ERROR-{ex.Message}\t";
                 }
@@ -100,7 +97,7 @@ namespace FRIWOLocalAPI.SerialPorts
 
         public void CloseSerialPort()
         {
-            if(SerialPortIsOpen())
+            if (SerialPortIsOpen())
             {
                 try
                 {
@@ -108,7 +105,7 @@ namespace FRIWOLocalAPI.SerialPorts
                     SerialPort.Close();
                     SerialPortError += $"{DateTime.Now:HH:mm:ss}: Port Closed\t";
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     SerialPortError += $"{DateTime.Now:HH:mm:ss}: ERROR-{ex.Message}\t";
                 }
@@ -120,13 +117,13 @@ namespace FRIWOLocalAPI.SerialPorts
             return SerialPort.IsOpen;
         }
 
-        public async Task<List<Unit>> SendData(List<Unit> results)
+        public async Task<List<UnitDTO>> SendData(List<UnitDTO> results)
         {
 
             SerialPortError = "Start testing";
-            if(!SerialPortIsOpen())
+            if (!SerialPortIsOpen())
                 OpenSerialPort();
-                     
+
             SerialPort.WriteTimeout = 500;
             SerialPort.ReadTimeout = 500;
             firstCmd = true;
@@ -138,30 +135,30 @@ namespace FRIWOLocalAPI.SerialPorts
 
             Debug.WriteLine($"Start_Test: {DateTime.Now.ToLongTimeString()}");
             int count = 0;
-            while(firstCmd)
+            while (firstCmd)
             {
                 await Task.Delay(100);
-               
+
                 count++;
             }
-         
+
             SerialPort.WriteTimeout = 500;
             SerialPort.WriteLine("SAF:RES:AREP OFF");
-            for(int i = 0; i < results.Count; i++)
+            for (int i = 0; i < results.Count; i++)
             {
                 SerialPort.ReadTimeout = 500;
                 SerialPort.WriteLine($"SAF:CHAN00{i + 1}:RES:ALL?");
                 var str = Regex.Match(SerialPort.ReadLine(), @"\d+").Value;
                 Console.WriteLine(str);
 
-                results[i].Result = Int32.Parse(str) == 116 ? true : false;
+                results[i].Result = int.Parse(str) == 116 ? true : false;
 
                 results[i].IsTested = true;
-           
+
 
             }
 
-            for(int i = 0; i < results.Count; i++)
+            for (int i = 0; i < results.Count; i++)
             {
                 SerialPort.ReadTimeout = 500;
                 SerialPort.WriteLine($"SAF:CHAN00{i + 1}:RES:ALL:MMET?");
@@ -170,7 +167,7 @@ namespace FRIWOLocalAPI.SerialPorts
 
                 results[i].Data = str;
                 Console.WriteLine($"{results[i].Data }  { results[i].Result}");
-                if(i == results.Count - 1)
+                if (i == results.Count - 1)
                 {
                     //SerialPort.ReadTimeout = 500;
                     SerialPort.WriteLine("SAF:STOP");
@@ -213,11 +210,12 @@ namespace FRIWOLocalAPI.SerialPorts
         }
 
         public async Task<List<SerialPortItem>> GetSerialPortList()
-        {   var resultList = new List<SerialPortItem>();
+        {
+            var resultList = new List<SerialPortItem>();
             var list = SerialPort.GetPortNames();
-            foreach(var i in list)
+            foreach (var i in list)
             {
-                var item = new SerialPortItem{Name=i};
+                var item = new SerialPortItem { Name = i };
                 resultList.Add(item);
             }
             await Task.CompletedTask;
@@ -235,7 +233,7 @@ namespace FRIWOLocalAPI.SerialPorts
                 firstCmd = false;
                 Console.WriteLine(e.ToString());
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 string msg = ex.Message;
                 Logger.LogInformation("Read timeout!");
@@ -255,13 +253,13 @@ namespace FRIWOLocalAPI.SerialPorts
 
             startTime = DateTime.Now;
 
-            while(!stoppingToken.IsCancellationRequested)
+            while (!stoppingToken.IsCancellationRequested)
             {
                 try
                 {
                     //Logger.LogInformation("ServiceA is doing background work. Iterations:{counter}", Counter);
 
-                    if(SerialPort.IsOpen)
+                    if (SerialPort.IsOpen)
                     {
                         var serialData = SerialPort.ReadLine();  //blocks until cr received, really need a time out on this
                         Debug.WriteLine($"Received: {serialData}");
@@ -269,9 +267,9 @@ namespace FRIWOLocalAPI.SerialPorts
 
                         Counter++;
 
-                        lock(CollectionLock)
+                        lock (CollectionLock)
                         {
-                            if(_asciiDataCollection.Count >= 15)
+                            if (_asciiDataCollection.Count >= 15)
                             {
                                 //remove first record
                                 _asciiDataCollection.RemoveAt(0);
@@ -289,11 +287,11 @@ namespace FRIWOLocalAPI.SerialPorts
                         sampleTime = 5;
                     }
                 }
-                catch(System.TimeoutException)
+                catch (TimeoutException)
                 {
                     break;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Logger.LogInformation($"SerialService exception: {ex.Message}");
                 }

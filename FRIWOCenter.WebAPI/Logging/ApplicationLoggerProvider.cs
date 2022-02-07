@@ -1,9 +1,8 @@
-using BlazorWASM.WebAPI.Logging;
-using BlazorWASM.WebAPI.Models;
+using FRIWOCenter.WebHost.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace BlazorWASM.WebAPI.Logging
+namespace FRIWOCenter.WebHost.Logging
 {
     public class ApplicationLoggerProvider : ILoggerProvider
     {
